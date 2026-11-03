@@ -1,5 +1,9 @@
 <?php
 
+// Force HTTPS Header & Port untuk Vercel Reverse Proxy
+$_SERVER['HTTPS'] = 'on';
+$_SERVER['SERVER_PORT'] = 443;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 // Tempat penyimpanan sementara Vercel
@@ -26,7 +30,7 @@ $_ENV['APP_CONFIG_CACHE']   = $tmpCache . '/config.php';
 $_ENV['APP_ROUTES_CACHE']   = $tmpCache . '/routes.php';
 $_ENV['APP_EVENTS_CACHE']   = $tmpCache . '/events.php';
 
-// Force Session ke array (RAM) agar tidak butuh write permission ke disk
+// Force Session & Cache ke array (RAM)
 $_ENV['SESSION_DRIVER'] = 'array';
 $_ENV['CACHE_DRIVER'] = 'array';
 
