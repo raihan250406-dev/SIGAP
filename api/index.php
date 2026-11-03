@@ -2,11 +2,10 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// Direktori sementara Vercel
+// Tempat penyimpanan sementara Vercel
 $tmpStorage = '/tmp/storage';
 $tmpCache = '/tmp/bootstrap/cache';
 
-// Buat direktori sementara jika belum ada
 $dirs = [
     $tmpStorage . '/framework/views',
     $tmpStorage . '/framework/sessions',
@@ -27,9 +26,9 @@ $_ENV['APP_CONFIG_CACHE']   = $tmpCache . '/config.php';
 $_ENV['APP_ROUTES_CACHE']   = $tmpCache . '/routes.php';
 $_ENV['APP_EVENTS_CACHE']   = $tmpCache . '/events.php';
 
-// Force Session ke /tmp (File) & cookie HTTPS
-$_ENV['SESSION_DRIVER'] = 'file';
-$_ENV['SESSION_SECURE_COOKIE'] = 'false';
+// Force Session ke array (RAM) agar tidak butuh write permission ke disk
+$_ENV['SESSION_DRIVER'] = 'array';
+$_ENV['CACHE_DRIVER'] = 'array';
 
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
