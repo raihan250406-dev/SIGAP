@@ -94,3 +94,17 @@ Route::middleware('auth')->group(function () {
         'logout',
     ])->name('logout');
 });
+
+
+
+Route::get('/diagnostic-session', function () {
+    return response()->json([
+        'laravel_version' => app()->version(),
+        'session_driver' => config('session.driver'),
+        'session_cookie' => config('session.cookie'),
+        'session_secure' => config('session.secure'),
+        'session_same_site' => config('session.same_site'),
+        'request_secure' => request()->isSecure(),
+        'session_started' => app('session')->isStarted(),
+    ]);
+});
