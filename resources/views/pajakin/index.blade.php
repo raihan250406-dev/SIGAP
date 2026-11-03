@@ -2284,6 +2284,3 @@
 
 </body>
 </html>
-
-<?php
-require __DIR__ . '/../public/index.php';
