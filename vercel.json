@@ -1,12 +1,19 @@
 {
-    "version": 2,
-    "framework": null,
-    "outputDirectory": ".",
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.3" }
+  "version": 2,
+  "outputDirectory": ".",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.6.0"
+    }
+  },
+  "routes": [
+    {
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
     },
-    "routes": [
-        { "src": "/build/(.*)", "dest": "/build/$1" },
-        { "src": "/(.*)", "dest": "/api/index.php" }
-    ]
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
 }
